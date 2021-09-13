@@ -1,0 +1,210 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 96vw;
+}
+
+/* Register/Welcome */
+
+.reg-log {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background-color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 1;
+}
+
+.reg-box {
+  border: 1px solid #ffffff80;
+  margin: 8px auto;
+  padding: 25px;
+  color: white;
+  width: 400px;
+}
+
+.close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* Main content */
+
+.wrapper {
+  width: 600px;
+  padding: 20px;
+}
+
+/* To make sure page loads before interpolation values appear */
+[v-cloak] {
+  display: none;
+}
+
+.box {
+  border: 1px solid #ffffff80;
+  margin: 8px auto;
+  padding: 25px;
+  color: white;
+  /*width: 400px;*/
+}
+
+.title {
+  margin: 0 auto;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin: 5px 0;
+}
+
+/*Input counter, not active for now*/
+label[for='note'] {
+  display: flex;
+  justify-content: space-between;
+}
+
+input[type='datetime-local'] {
+  width: 45%;
+  padding: 5px;
+}
+
+.input-count {
+  padding: 0 5px;
+}
+
+.td-title,
+.td-note,
+.user-name,
+.user-email {
+  width: 100%;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.td-submit {
+  cursor: pointer;
+  margin: 10px 0;
+  width: 100%;
+  padding: 15px;
+  color: white;
+  background-color: #4d4d4d;
+  border: none;
+  font-size: 25px;
+}
+
+.td-title:focus,
+.td-note:focus,
+.user-name:focus,
+.user-email:focus {
+  outline: none;
+}
+
+.error {
+  /*border: 1px solid #cb0f0f;
+	margin: 8px 15px;
+	padding: 10px;*/
+  color: #cb0f0f;
+  text-align: center;
+}
+
+sup {
+  color: #cb0f0f;
+}
+
+table,
+th,
+td {
+  border-collapse: collapse;
+}
+
+tr {
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+  background-color: #595959;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+}
+
+/*.td-display {
+	padding: 10px 0;
+	border-bottom: 1px solid #fff;
+}*/
+
+tbody:last-child {
+  border-bottom: none;
+}
+
+.td-done {
+  text-decoration: line-through;
+}
+
+.td-new {
+  color: #fff;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+@media (min-width: 900px) {
+  body {
+    display: block;
+    height: 60vh;
+    overflow: hidden;
+  }
+
+  .wrapper {
+    margin: 0 auto;
+    padding: 50px 100px;
+    width: 100%;
+  }
+
+  .flex {
+    display: flex;
+    flex-flow: rownowrap;
+    justify-content: space-between;
+    /*width: 100%;*/
+  }
+
+  .box {
+    width: 100%;
+  }
+
+  .one {
+    flex: 20%;
+    margin: 0 20px 0 0;
+  }
+
+  .two {
+    flex: 40%;
+    margin: 0 0 0 20px;
+  }
+
+  .two .box {
+    max-height: 85vh;
+    overflow-y: scroll;
+    max-width: 670px;
+  }
+}

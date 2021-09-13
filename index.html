@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>My ToDo Manager</title>
+  <link rel="stylesheet" href="styles.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+  <div class="wrapper" id="wrapper" v-cloak>
+    <div class="reg-log" v-if="mountRegForm">
+      <!-- For development only<div class="close" v-on:click="close ">X</div>-->
+      <form class="reg-box" @submit.prevent="regLogEmail" novalidate="true">
+        <div class="error">
+          {{ errors }}
+        </div>
+        <div>
+          <span v-if="isLogged">
+            <h3 style="text-align:center;">Welcome back, {{ user_name }}</h3>
+          </span>
+          <span v-else="isLogged">
+            <h3 style="text-align:center;">Register your email to continue</h3>
+            <label for="user_name">Name <sup>*</sup></label>
+            <input v-model.lazy="user_name" class="user-name" />
+          </span>
+        </div>
+        <label for="user_email">
+          E-mail <sup>*</sup>
+        </label>
+        <input type="email" v-model="user_email" class="user-email" />
+        <button type="submit" class="td-submit"><i class="las la-long-arrow-alt-right"></i></button>
+      </form>
+    </div>
+    <div class="flex">
+      <div class="one">
+        <div class="box">
+          <h1 class="title">{{ title }}</h1>
+        </div>
+        <form class="box" @submit.prevent="addNewTD">
+          <div class="error">
+            {{ errors }}
+          </div>
+          <label for="title">Title <sup>*</sup></label>
+          <input class="td-title" v-model.lazy="td_title" />
+          <!--<label for="note">
+                            Note
+                            <div id="input-count" class="input-count"></div>
+                        </label>
+                         <textarea class="td-note" v-model.lazy="td_note"></textarea>
+                        <label for="due-date">Due date: <sup>*</sup></label>
+                        <input type="datetime-local" v-model.lazy="td_due" /> -->
+          <button type="submit"class="td-submit"><i class="las la-plus-square"></i></button>
+        </form>
+      </div>
+      <div class="two">
+        <div class="box" v-if="isPopulated">
+          <table class="td-display">
+            <tr>
+              <th>#</th>
+              <th>ToDo</th>
+              <th>#</th>
+              <th>#</th>
+              <th>#</th>
+            </tr>
+            <tr v-for="(todo, index) in todos" :key="index">
+              <td> <i @click="toggleState(index, $event)" :class="['las', todo.td_new ? 'la-stop' : 'la-check-square', 'cursor']"></i></td>
+              <td :class="[ todo.td_new ? 'td-new' : 'td-done']">{{todo.td_title }}
+              </td>
+              <td class="td-edit" @click="editTD(index)"> <i class="las la-edit cursor"></i> </td>
+              <td onclick="(alert('Archive function not created yet'))"><i class="las la-archive cursor"></i></td>
+              <td class="td-delete" @click="deleteTd(index)"> <i class="las la-trash cursor"></i> </td>
+            </tr>
+          </table>
+        </div>
+        <div class="box" v-else="isPopulated">
+          <div style="text-align:center;" class="td-display">
+            No todo item added
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
